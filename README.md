@@ -9,7 +9,7 @@ Can you help them?
 ## 🎯 Solutions
 
 **How does external DNS work?**
-External DNS is a pod running in your cluster which watches over all your ingresses. When it detects an ingress with a host specified, it automatically picks up the hostname as well as the endpoint and creates a record for that resource in Route53. If the host is changed or deleted, external DNS will reflect the change immediately in Route53.
+External DNS<sup>[1]</sup> is a pod running in your cluster which watches over all your ingresses. When it detects an ingress with a host specified, it automatically picks up the hostname as well as the endpoint and creates a record for that resource in Route53. If the host is changed or deleted, external DNS will reflect the change immediately in Route53.
 
 We need to provision external DNS pod with permissions to create interact with Route53. We can configure a service account and annotate it with the AWS IAM Role to give the necessary privileges. The DNS service also needs to know which domain(say example.com or myunicorn.com ) and AWS Route 53 hosted zone to configure records.
 
@@ -280,7 +280,7 @@ You will **need** a public domain name with a hosted zone to follow along this b
 
    1. **Deploy Web Service**
 
-      A sample of the external dns manifest is provided under here `stacks/k8s_utils/manifests/svc-nginx.yml`. To manifest needs values specific to your domain. Here in this sample, i have named my service domain as `albedo.miztiik.in`. <sup><sub>Learn more about albedo in wiki[]</sub></sup>
+      A sample of the external dns manifest is provided under here `stacks/k8s_utils/manifests/svc-nginx.yml`. To manifest needs values specific to your domain. Here in this sample, i have named my service domain as `albedo.miztiik.in`. <sup><sub>Learn more about albedo in wiki[2]</sub></sup>
 
       ```bash
       kubectl apply -f svc_nginx.yml
@@ -425,9 +425,8 @@ Thank you for your interest in contributing to our project. Whether it is a bug 
 
 ### 📚 References
 
-1. [Kubernetes Docs: Persistent Volumes][1]
-1. [AWS Docs: EFS][2]
-1. [Wiki: Albedo][3]
+1. [External DNS Docs][1]
+1. [Wiki: Albedo][2]
 
 ### 🏷️ Metadata
 
@@ -435,9 +434,8 @@ Thank you for your interest in contributing to our project. Whether it is a bug 
 
 **Level**: 200
 
-[1]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
-[2]: https://aws.amazon.com/efs/
-[3]: https://en.wikipedia.org/wiki/Albedo
+[1]: https://github.com/kubernetes-sigs/external-dns
+[2]: https://en.wikipedia.org/wiki/Albedo
 [100]: https://www.udemy.com/course/aws-cloud-security/?referralCode=B7F1B6C78B45ADAF77A9
 [101]: https://www.udemy.com/course/aws-cloud-security-proactive-way/?referralCode=71DC542AD4481309A441
 [102]: https://www.udemy.com/course/aws-cloud-development-kit-from-beginner-to-professional/?referralCode=E15D7FB64E417C547579
