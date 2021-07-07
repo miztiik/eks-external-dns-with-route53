@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: miztiik-automation-ns
+  labels:
+    name: miztiik-automation-ns
+    dept: engineering
+    team: red-shirts
+    project: eks-external-dns-with-route53
+  annotations:
+    contact: github.com/miztiik
